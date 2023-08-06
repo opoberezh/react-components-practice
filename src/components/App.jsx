@@ -1,16 +1,12 @@
+import videos from "./data/videos.json";
+import { VideoList } from "./video/VideoList";
+
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <VideoList videos={videos}/>
     </div>
   );
 };
