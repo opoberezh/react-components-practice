@@ -1,18 +1,22 @@
 
+import {Item, Container, Video, Title, Describtion, Poster} from "./Videos.styled";
+
+
 export const VideoItem = (({video}) => {
-    const imgPath = "./Images/";
+  
 
 return(
 
-    <li>
-        <thumb video={video} />
-        <a href={video.url}>
-            <h2>{video.title}</h2>
-            <p>{video.describtion}</p>
-            <img  src={imgPath} alt={video.title}/>
+    <Item>
+        <Poster src={video.thumbnail} alt={video.title}/>
+        <Container video={video} />
+        <Link href={video.url}>
+            <Title>{video.title}</Title>
+            <Describtion>{video.describtion}</Describtion>
+            
             <button>{`Like ${video.likes}`}</button>
 
-        </a>
-    </li>
+        </Link>
+    </Item>
 );
 })
