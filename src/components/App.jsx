@@ -1,12 +1,13 @@
-import videos from "./data/videos.json";
-import { VideoList } from "./video/VideoList";
-
+import { QuizList } from "./QuizList";
+import quizItems from "../data.json";
+import { SearchBar } from "./SearchBar";
 
 
 export const App = () => {
   return (
-    <div>
-      <VideoList videos={videos}/>
-    </div>
+    <>
+      <SearchBar/>
+      <QuizList items={quizItems}/>
+    </>
   );
 };
