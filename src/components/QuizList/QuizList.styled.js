@@ -25,6 +25,7 @@ export const ListItem = styled.li`
   border-radius: 4px;
 
   :hover {
-    background-color: gray;
+    background-color:${getBorderColor};
+   
   }
 `;
