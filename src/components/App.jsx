@@ -5,24 +5,24 @@ import { Layout } from './Layout';
 import { Component } from 'react';
 
 export class App extends Component {
-  state = {
-    quizItems: initialQuizItems,
-  };
+  // якщо потрібно ініціалізувати стан від якоїсь змінної, просто замість літера треба вказати імя змінної
+state={
+  quizitems: initialQuizItems,
+}
 
-  handleDelete = quizId => {
-    this.setState(prevState => {
-      return {
-        quizItems: prevState.quizItems.filter(quiz => quiz.id !== quizId),
-      };
-    });
-  };
+// створюємо метод для зміни стану , щоб передати його до QuizCard , спочатку передаємо до  QuizList, апотім у QuizCard
+handleDelete = (quizId) =>{
+console.log('handleDelete', quizId)
+}
 
   render() {
-    return (
-      <Layout>
-        <SearchBar />
-        <QuizList items={this.state.quizItems} onDelete={this.handleDelete} />
-      </Layout>
-    );
+      return (
+        <Layout>
+          <SearchBar />
+          <QuizList items={this.state.quizitems} onDelete={this.handleDelete}/>
+        </Layout>
+    )
   }
+   
+   
 }
