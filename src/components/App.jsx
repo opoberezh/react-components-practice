@@ -12,7 +12,13 @@ state={
 
 // створюємо метод для зміни стану , щоб передати його до QuizCard , спочатку передаємо до  QuizList, апотім у QuizCard
 handleDelete = (quizId) =>{
-console.log('handleDelete', quizId)
+this.setState(prevState => {
+  return {
+    // треба взяти попередні дані мосива та пропустити через фільтр
+    quizitems: prevState.quizitems.filter(quiz => quiz.id !== quizId)
+    // умова фільтрації: нам потрібно залишити тільки ті елементи,  id яких не співпадає з  id ,які треба видалити
+  }
+})
 }
 
   render() {
