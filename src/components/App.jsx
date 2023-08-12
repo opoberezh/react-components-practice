@@ -4,6 +4,8 @@ import { SearchBar } from './SarchBar/SearchBar';
 import { Layout } from './Layout';
 import { Component } from 'react';
 
+import { QuizForm } from './Form/Form';
+
 export class App extends Component {
   // якщо потрібно ініціалізувати стан від якоїсь змінної, просто замість літера треба вказати імя змінної
 state={
@@ -21,10 +23,32 @@ this.setState(prevState => {
 })
 }
 
+addQuiz = newQuiz => {
+  this.setState(prevState => {
+    return {
+      quizItems: [...prevState.quizItems, newQuiz],
+    };
+  });
+};
+
+getVisibleQuizItems = () => {
+  const { quizItems, filters } = this.state;
+  const lowerCaseTopic = filters.topic.toLowerCase();
+
+  return quizItems.filter(quiz => {
+    const hasTopic = quiz.topic.toLowerCase().includes(lowerCaseTopic);
+    if (filters.level === 'all') {
+      return hasTopic;
+    }
+    return hasTopic && quiz.level === filters.level;
+  });
+};
+
   render() {
       return (
         <Layout>
           <SearchBar />
+          <QuizForm/>
           <QuizList items={this.state.quizitems} onDelete={this.handleDelete}/>
         </Layout>
     )
